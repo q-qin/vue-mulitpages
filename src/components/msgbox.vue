@@ -131,8 +131,7 @@ export default {
   top: 0;
   width: 100%;
   height: 100%;
-  opacity: 0.5;
-  background: #000;
+  background: rgba(0,0,0,.5);
 }
 .msgbox {
   position: fixed;
@@ -140,7 +139,8 @@ export default {
   top: 50%;
   left: 50%;
   transform: translate3d(-50%, -50%, 0);
-  border-radius: 0.2rem;
+  -webkit-transform: translate3d(-50%, -50%, 0);
+  border-radius: 0.1rem;
   user-select: none;
   -webkit-user-select: none;
   overflow: hidden;
@@ -150,20 +150,19 @@ export default {
 
 .msgbox-header {
   width: 5.8rem;
+  height: 1rem;
   margin: auto;
-  position: relative;
 }
 
 .msgbox-content {
   padding: 0 0.4rem;
   min-height: 1.1rem;
-  position: relative;
 }
 
 .msgbox-title {
   text-align: center;
   padding-left: 0;
-  padding: .2rem 0;
+  padding-top: .4rem;
   font-size: 0.4rem;
 }
 
@@ -213,9 +212,11 @@ export default {
 .msgbox-bounce-enter {
   opacity: 0;
   transform: translate3d(-50%, -50%, 0) scale(0.7);
+  -webkit-transform: translate3d(-50%, -50%, 0) scale(0.7);
 }
 .msgbox-bounce-leave-active {
   opacity: 0;
   transform: translate3d(-50%, -50%, 0) scale(0.9);
+  -webkit-transform:translate3d(-50%, -50%, 0) scale(0.9);
 }
 </style>

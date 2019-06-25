@@ -5,9 +5,10 @@ var config = require('../config')
 
 var glob = require('glob');
 //// 模块名称
-var project = 'activities';
+var project = process.env.PROJ || '*';
+console.log('projectName:',project)
 var entries =  utils.getMultiEntry('./src/'+config.moduleName+'/**/**/*.js'); // 获得入口js文件
-//var entries =  utils.getMultiEntry('./src/views/'+project+'/**/*.html'); // 获得入口js文件
+// var entries =  utils.getMultiEntry('./src/views/'+project+'/**/*.js'); // 单独模块js入口
 var chunks = Object.keys(entries);
 console.log(chunks)
 
@@ -39,12 +40,24 @@ function resolve (dir) {
   return path.join(__dirname, '..', dir)
 }
 
+const createLintingRule = () => ({
+  test: /\.(js|vue)$/,
+  loader: 'eslint-loader',
+  enforce: 'pre',
+  // 定义eslint 文件
+  include: [/*resolve('src/pages/main')*/],
+  options: {
+    formatter: require('eslint-friendly-formatter'),
+    emitWarning: !config.dev.showEslintErrorsInOverlay
+  }
+})
+
 var webpackConfig = {
 
   entry:entries,
   output: {
     path: _assetsRoot,
-    filename: '[name].js',
+    filename: '[name].[hash].js',
     publicPath: _assetsPublicPath
   },
   // externals:{
@@ -65,6 +78,7 @@ var webpackConfig = {
   },
   module: {
     rules: [
+      ...(config.dev.useEslint ? [createLintingRule()] : []),
       {
         test: /\.vue$/,
         loader: 'vue-loader',
@@ -104,7 +118,14 @@ var webpackConfig = {
       minChunks: 4 || chunks.length //公共模块被使用的最小次数。比如配置为3，也就是同一个模块只有被3个以外的页面同时引用时才会被提取出来作为common chunks。
 
     }),*/
-   
+    // new webpack.ProvidePlugin({
+    //     jQuery: "jquery",
+    //     $: "jquery"
+    // })
+    new webpack.DllReferencePlugin({
+      context:  __dirname,
+      manifest: require('./vendor-manifest.json'),
+    }),
   ]
 }
 

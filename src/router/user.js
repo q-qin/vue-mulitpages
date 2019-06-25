@@ -1,12 +1,10 @@
-import user from '@/apps/main/user/user.vue'
-import login from '@/apps/main/user/login.vue'
-import account from '@/apps/main/user/account.vue'
-
+import user from '@/views/main/user/user.vue'
+import login from '@/views/main/user/login.vue'
 const routers = [{
         name: 'index',
         path: '/',
         meta: {
-            title: '用户中心'
+            title: '首页'
         },
         component: user
     },
@@ -17,14 +15,6 @@ const routers = [{
             title: '登录'
         },
         component: login
-    },
-    {
-        name: 'account',
-        path: '/account',
-        meta: {
-            title: '用户中心'
-        },
-        component: account
     }
 ]
 

@@ -9,10 +9,10 @@
                 <i class="iconfont toolbar-menu" v-if="showMenu"  @click="showMenus">&#xe614;</i>
                 <i class="iconfont toolbar-nav" v-if="showBack"  @click="goback">&#xe6b0;</i>
                 <span v-text="pageName"></span>
-                <a href="/apps/activities/qiandao.html" v-if="showAct">
+                <a href="/views/activities/novels.html" v-if="showAct">
                     <i class="iconfont icon-right">&#xe726;</i>
                 </a>
-                <a href="/apps/main/home.html" v-if="showHome">
+                <a href="/views/main/home.html" v-if="showHome">
                     <i class="iconfont icon-right">&#xe658;</i>
                 </a>
             </div>

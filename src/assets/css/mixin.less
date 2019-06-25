@@ -1,0 +1,64 @@
+// 页面主颜色
+@mcolor:#d53c3e;
+// 页面主背景色
+@mbg:#fbf9f9;
+
+// 60%透明度主颜色
+@lcolor:#efc1c1;
+@mborder:#f1f1f1;
+
+// 宽高
+.wh(@width,@height:auto){
+  width:@width;
+  height: @height;
+}
+
+// 背景图
+.background(@url) {
+  background: url("../images/@{url}") no-repeat center center;
+  background-size: 100%;
+}
+// line-height 兼容安卓垂直居中坑（使用伪类）
+.lineheight(@height){
+  line-height:@height;
+  display: inline-block;
+  vertical-align: middle;
+  &:before{
+    content: '';
+    display: inline-block;
+    vertical-align: middle;
+    width: 0;
+    height: 100%;
+    margin-top: 1px;
+  }
+}
+
+// 线条
+.border(@color;@position:''){
+  & when(@position=top){
+    border-top:1px solid @color;
+  }
+  & when(@position=bottom){
+    border-bottom:1px solid @color;
+  }
+  & when(@position=left){
+    border-left:1px solid @color;
+  }
+  & when(@position=right){
+    border-right:1px solid @color;
+  }
+  & when(@position=''){
+    border:1px solid @color;
+  }
+}
+
+// 模态框蒙层
+.mask(@red:0;@green:0;@blue:0;@alpha:0.5;){
+  position: fixed;
+  left: 0;
+  top: 0;
+  width: 100vw;
+  height: 100vh;
+  background: rgba(@red,@green,@blue,@alpha);
+  z-index: 10;
+}

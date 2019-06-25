@@ -81,6 +81,7 @@
         top: 50px;
         left: 50%;
         transform: translate(-50%, 0);
+        -webkit-transform: translate(-50%, 0);
       }
       
       .is-placemiddle {
@@ -93,6 +94,7 @@
         bottom: 50px;
         left: 50%;
         transform: translate(-50%, 0);
+        -webkit-transform: translate(-50%, 0);
       }
       
       .toast-pop-enter, .toast-pop-leave-active {

@@ -81,7 +81,8 @@ export default {
       let currenTransitionTime, currenTranslateY;
       // 方向向下，列表初始时跳转到最后item
       if (this.direction === "down") this.quickJump(false);
-      setInterval(() => {
+      if(this.timer) clearInterval(this.timer)
+      this.timer=setInterval(() => {
         if (!this.height) return false;
         if (this.direction === "up") {
           this.currentIndex += 1;
@@ -159,6 +160,7 @@ export default {
   width: 100%;
   overflow: hidden;
   transform: translateZ(0);
+  -webkit-transform: translateZ(0);
   height: 100%;
   .broadcast-container {
     padding: 0;

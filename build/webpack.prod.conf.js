@@ -9,7 +9,9 @@ var HtmlWebpackPlugin = require('html-webpack-plugin')
 var ExtractTextPlugin = require('extract-text-webpack-plugin')
 var OptimizeCSSPlugin = require('optimize-css-assets-webpack-plugin')
 
-var entries =  utils.getMultiEntry('./src/'+config.moduleName+'/**/**/*.js'); // 获得入口js文件
+var project = process.env.PROJ || '*';
+var entries = utils.getMultiEntry('./src/' + config.moduleName + '/**/**/*.js'); // 获得入口js文件
+// var entries =  utils.getMultiEntry('./src/views/'+project+'/**/*.js'); // 获得入口js文件
 var chunks = Object.keys(entries);
 
 var env = process.env.NODE_ENV
@@ -31,7 +33,7 @@ var webpackConfig = merge(baseWebpackConfig, {
   output: {
     path: _assetsRoot,
     filename: utils.assetsPath('js/[name].js'),
-    chunkFilename: utils.assetsPath('js/[id].js')
+    chunkFilename: utils.assetsPath('js/[id].[name].js')
   },
   plugins: [
     // http://vuejs.github.io/vue-loader/en/workflow/production.html
@@ -40,7 +42,9 @@ var webpackConfig = merge(baseWebpackConfig, {
     }),
     new webpack.optimize.UglifyJsPlugin({
       compress: {
-        warnings: false
+        warnings: false,
+        // drop_debugger: true,
+        // drop_console: true
       },
       sourceMap: true
     }),
@@ -54,7 +58,7 @@ var webpackConfig = merge(baseWebpackConfig, {
     // generate dist index.html with correct asset hash for caching.
     // you can customize output by editing /index.html
     // see https://github.com/ampedandwired/html-webpack-plugin
-   /* new HtmlWebpackPlugin({
+    /*new HtmlWebpackPlugin({
       filename: process.env.NODE_ENV === 'testing'
         ? 'index.html'
         : config.build.index,
@@ -89,9 +93,8 @@ var webpackConfig = merge(baseWebpackConfig, {
     new webpack.optimize.CommonsChunkPlugin({
       name: 'vendor',
       chunks: chunks,
-	  	minChunks: 4 || chunks.length 
+    	minChunks:4 || chunks.length
     }),
-	/*
     // copy custom static assets
     new CopyWebpackPlugin([
       {
@@ -99,10 +102,7 @@ var webpackConfig = merge(baseWebpackConfig, {
         to: config.build.assetsSubDirectory,
         ignore: ['.*']
       }
-    ])*/
-
-   
-
+    ])
   ]
 })
 
@@ -124,10 +124,10 @@ if (config.build.productionGzip) {
   )
 }
 
-if (config.build.bundleAnalyzerReport) {
-  var BundleAnalyzerPlugin = require('webpack-bundle-analyzer').BundleAnalyzerPlugin
-  webpackConfig.plugins.push(new BundleAnalyzerPlugin())
-}
+// if (config.build.bundleAnalyzerReport) {
+//   var BundleAnalyzerPlugin = require('webpack-bundle-analyzer').BundleAnalyzerPlugin
+//   webpackConfig.plugins.push(new BundleAnalyzerPlugin())
+// }
 
 //构建生成多页面的HtmlWebpackPlugin配置，主要是循环生成
 var pages =  utils.getMultiEntry('./src/'+config.moduleName+'/**/**/*.html');
@@ -138,7 +138,7 @@ for (var pathname in pages) {
     template: pages[pathname], // 模板路径
     chunks: ['vendor',pathname], // 每个html引用的js模块
     inject: true,              // js插入位置
-	hash:true
+    hash:true,
   };
  
   webpackConfig.plugins.push(new HtmlWebpackPlugin(conf));

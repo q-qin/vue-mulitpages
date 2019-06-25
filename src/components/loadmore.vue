@@ -374,11 +374,23 @@ export default {
 }
 .loadmore-text {
   vertical-align: middle;
+  font-size: .24rem;
 }
+
 .spinner-snake {
-  -webkit-animation: spinner-rotate 0.8s infinite linear;
   animation: spinner-rotate 0.8s infinite linear;
   border: 1px solid transparent;
   border-radius: 50%;
+}
+
+@keyframes spinner-rotate {
+    0% {
+        -webkit-transform: rotate(0deg);
+        transform: rotate(0deg);
+    }
+    100% {
+        -webkit-transform: rotate(360deg);
+        transform: rotate(360deg);
+    }
 }
 </style>

@@ -1,7 +1,6 @@
-import index from '@/apps/main/home/index.vue'
-import list from '@/apps/main/home/list.vue'
-import detail from '@/apps/main/home/detail.vue'
-import about from '@/apps/main/home/about.vue'
+import index from '@/views/main/home/index.vue'
+import list from '@/views/main/home/list.vue'
+import detail from '@/views/main/home/detail.vue'
 
 const routers = [{
         name: 'index',
@@ -14,24 +13,18 @@ const routers = [{
         name: 'list',
         path: '/list',
         meta: {
-            title: '列表页面'
+            title: '列表'
         },
         component: list
-    },{
-        name: 'about',
-        path: '/about',
-        meta: {
-            title: '关于我们'
-        },
-        component: about
-    },{
+    },
+    {
         name: 'detail',
         path: '/detail/:id',
         meta: {
-            title: '详情页面'
+            title: '详情'
         },
         component: detail
-    }
+    },
 ]
 
 export default routers

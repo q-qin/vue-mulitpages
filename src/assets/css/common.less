@@ -33,7 +33,6 @@ select {
     border: none;
     color: #333;
     box-sizing: border-box;
-    font-family: '-apple-system', "Helvetica Neue", "Roboto", "Segoe UI", sans-serif, miui;
     -webkit-tap-highlight-color: transparent;
     &:focus {
         outline: none;
@@ -42,12 +41,15 @@ select {
 
 html,
 body {
-    font-size: .24rem;
-    -webkit-tap-highlight-color: transparent
+    font:.24rem '-apple-system', "Helvetica Neue", "Roboto", "Segoe UI", sans-serif, miui;
+    -webkit-tap-highlight-color: transparent;
+    box-sizing:border-box;
 }
-body{
+
+body {
     overflow-x: hidden;
-    -webkit-user-drag:none;
+    -webkit-user-drag: none;
+    
 }
 
 * {
@@ -57,9 +59,10 @@ body{
     -moz-user-select: none;
     -ms-user-select: none;
     user-select: none;
+    -webkit-overflow-scrolling: touch;
 }
 
- ::-webkit-scrollbar {
+::-webkit-scrollbar {
     /*隐藏滚轮*/
     width: 0;
     display: none;
@@ -76,6 +79,8 @@ img {
     border: none;
     margin: 0 auto;
     display: block;
+    /*VIVO 坑*/
+    pointer-events: none;
 }
 
 .clear:after {
@@ -103,11 +108,9 @@ img {
 .show {
     display: block;
 }
-.fix-head{
-    margin-top: 1rem;
-}
 
 /*vue*/
+
 [v-cloak] {
     display: none;
 }
@@ -128,7 +131,30 @@ img {
     height: .25rem;
     background: #f1f1f1;
 }
+/* swiper 样式定制 */
+.swiper-pagination-bullet{
+    width:.1rem!important;
+    height: .1rem!important;
+    background: url("../images/bullet.png") no-repeat center center !important;
+    background-size: 100% !important;
+}
+.swiper-pagination{
+    bottom: .1rem!important;
+    height: .28rem;
+}
+.swiper-pagination-bullet{
+    // background:rgba(255,255,255,.6)!important;
+}
+.swiper-pagination-bullet-active{
+    // background:#f1f1f1!important;
+    background: url("../images/bullet_active.png") no-repeat center center !important;
+    background-size: 100% !important;
+}
+.swiper-container-horizontal > .swiper-pagination-bullets .swiper-pagination-bullet{
+    margin:0 .1rem!important;
+}
 
+/* iconfont */
 @font-face {
     font-family: 'iconfont';  /* project id 599109 */
     src: url('//at.alicdn.com/t/font_599109_j19yr1ea1hsemi.eot');
@@ -136,7 +162,7 @@ img {
     url('//at.alicdn.com/t/font_599109_j19yr1ea1hsemi.woff') format('woff'),
     url('//at.alicdn.com/t/font_599109_j19yr1ea1hsemi.ttf') format('truetype'),
     url('//at.alicdn.com/t/font_599109_j19yr1ea1hsemi.svg#iconfont') format('svg');
-}
+  }
 
 .iconfont {
     font-family: "iconfont" !important;
@@ -155,11 +181,27 @@ img {
     width: 100%;
     height: 100%;
 }
-.table-row{
+
+.table-row {
     display: table-row;
 }
 
 .table-cell {
     display: table-cell;
     vertical-align: middle;
+}
+
+.fix-head{
+    margin-top: 1.1rem;
+}
+
+// 无宽高模态框样式
+.modal {
+    z-index: 11;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    -webkit-transform: translate(-50%, -50%);
+    background: #fff;
 }

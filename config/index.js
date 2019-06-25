@@ -1,18 +1,19 @@
 // see http://vuejs-templates.github.io/webpack for documentation.
 var path = require('path')
+const apiUrl = 'http://api.3keji.com'
 
 module.exports = {
 	
   //网站模块名，例如 http://localhost:8089/module/app/index.html 中的 
-  //【apps】，默认为apps，修改这里的配置的同时，也要同时重命名/src/apps的这个文件夹名称  
-  moduleName:'apps', 
+  //【views】，默认为views，修改这里的配置的同时，也要同时重命名/src/views的这个文件夹名称  
+  moduleName:'views', 
   
   build: {
     env: require('./prod.env'),
     index: path.resolve(__dirname, '../dist/index.html'),
     assetsRoot: path.resolve(__dirname, '../dist'),
     assetsSubDirectory: 'static',
-    assetsPublicPath: '../../',
+    assetsPublicPath: '../../', 
     productionSourceMap: true,
     // Gzip off by default as many popular static hosts such as
     // Surge or Netlify already gzip all static assets for you.
@@ -24,7 +25,7 @@ module.exports = {
     // View the bundle analyzer report after build finishes:
     // `npm run build --report`
     // Set to `true` or `false` to always turn it on or off
-    bundleAnalyzerReport: process.env.npm_config_report
+    bundleAnalyzerReport: process.env.npm_config_report,
   },
   test: {
     env: {NODE_ENV: '"test"'},
@@ -47,8 +48,8 @@ module.exports = {
   },
   dev: {
     env: require('./dev.env'),
-    port: 8089,
-    autoOpenBrowser: true,
+    port: 8091,
+    autoOpenBrowser: false,
     assetsSubDirectory: 'static',
     assetsPublicPath: '/',
     proxyTable: {},
@@ -57,6 +58,25 @@ module.exports = {
     // (https://github.com/webpack/css-loader#sourcemaps)
     // In our experience, they generally work as expected,
     // just be aware of this issue when enabling this option.
-    cssSourceMap: false
+    cssSourceMap: false,
+    // 设置代理
+    proxyTable:{
+      '/news': {
+        target: `${apiUrl}/news`,
+        secure: false,
+        changeOrigin: true,
+        pathRewrite: {
+            '^/news': ''
+        }
+      },
+      '/user': {
+        target: `${apiUrl}/user`,
+        secure: false,
+        changeOrigin: true,
+        pathRewrite: {
+            '^/user': ''
+        }
+      },
+    }
   }
 }

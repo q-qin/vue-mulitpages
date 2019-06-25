@@ -2,11 +2,11 @@
     <section id="sideBar" class="nav-list" :class="{'show':menuToggle}">
     	<userInfo></userInfo>
         <section class="list-ul">
-            <a class="icon-quanbu iconfont item" href="/apps/main/home.html#/list?tab=all"  >全部</a>
-            <a class="icon-hao iconfont item" href="/apps/main/home.html#/list?tab=good" >精华</a>
-            <a class="icon-fenxiang iconfont item" href="/apps/main/home.html#/list?tab=share" >分享</a>
-            <a class="icon-xiaoxi iconfont item " href="/apps/main/home.html#/list?tab=bad" >打假</a>
-            <a class="icon-about iconfont item line" href="/apps/main/home.html#/about" >关于</a>
+            <a class="icon-quanbu iconfont item" href="/views/main/home.html#/list?tab=all"  >全部</a>
+            <a class="icon-hao iconfont item" href="/views/main/home.html#/list?tab=good" >精华</a>
+            <a class="icon-fenxiang iconfont item" href="/views/main/home.html#/list?tab=share" >分享</a>
+            <a class="icon-xiaoxi iconfont item " href="/views/main/home.html#/list?tab=bad" >打假</a>
+            <a class="icon-about iconfont item line" href="/views/main/home.html#/about" >关于</a>
         </section>
     </section>
 </template>
