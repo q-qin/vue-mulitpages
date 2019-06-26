@@ -91,6 +91,7 @@
     "vue-loader": "^12.2.0",
     "vue-photo-viewer": "^1.0.5",
     "vue-progressbar": "^0.7.4",
+    "vue-skeleton-webpack-plugin": "^1.2.2",
     "vue-style-loader": "^2.0.0",
     "vue-template-compiler": "^2.2.1",
     "webpack": "^2.2.1",
