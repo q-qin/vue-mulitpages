@@ -1,4 +1,6 @@
-# 基于vue+webpack+axios+less写的多页面webapp [线上访问地址](http://wcjs.3keji.com/)
+# 基于vue+webpack+axios写的多页面webapp [线上访问地址](http://wcjs.3keji.com/)
+
+## 骨架屏vue-skeleton-webpack-plugin+dll依赖打包webpack.DllPlugin
 ``` bash
 # 安装依赖
 npm install
