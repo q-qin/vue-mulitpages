@@ -1,6 +1,6 @@
 // see http://vuejs-templates.github.io/webpack for documentation.
 var path = require('path')
-const apiUrl = 'http://api.3keji.com'
+const apiUrl = 'http://wcjs.3keji.com'
 
 module.exports = {
 	
@@ -77,6 +77,7 @@ module.exports = {
             '^/user': ''
         }
       },
-    }
+    },
+    showEslintErrorsInOverlay:false,
   }
 }

@@ -36,7 +36,7 @@
           </div>
       </div>
       <div class="spacer"></div>
-      <div class="list left" v-for="(item,$index) in list" :key=$index>
+      <div class="list left" v-for="(item,$index) in list" :key=$index @click="alert">
         <div class="img">
           <img v-lazy="item.img">
         </div>
@@ -97,7 +97,9 @@ export default {
   mounted() {
   },
   methods: {
-    
+    alert(){
+      this.$alert('暂未开放，请期待。。。')
+    }
   },
   filters:{
     followNum(value) {

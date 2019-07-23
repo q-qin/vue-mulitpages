@@ -45,7 +45,7 @@ const createLintingRule = () => ({
   loader: 'eslint-loader',
   enforce: 'pre',
   // 定义eslint 文件
-  include: [/*resolve('src/pages/main')*/],
+  include: [resolve('src／views/main/home')],
   options: {
     formatter: require('eslint-friendly-formatter'),
     emitWarning: !config.dev.showEslintErrorsInOverlay

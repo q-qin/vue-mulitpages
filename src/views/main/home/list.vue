@@ -88,19 +88,19 @@ export default {
     		let str = '';
 		    let className = '';
 		    switch (type) {
-		        case '0':
+		        case 0:
 		            str = '置顶';
 		            className = 'top';
 		            break;
-		        case '1':
+		        case 1:
 		            str = '精华';
 		            className = 'good';
 		            break;
-		        case '2':
+		        case 2:
 		            str = '分享';
 		            className = 'share';
 		            break;
-		        case '3':
+		        case 3:
 		            str = '打假';
 		            className = 'ask';
 		            break;

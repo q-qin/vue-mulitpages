@@ -1,7 +1,7 @@
 import $qs from 'qs'
 import $axios from 'axios'
 import msgbox from '@/assets/js/msgbox'
-$axios.defaults.baseURL = process.env.NODE_ENV === 'development' ? '/' : '//api.3keji.com'
+$axios.defaults.baseURL = process.env.NODE_ENV === 'development' ? '/' : '//wcjs.3keji.com'
 $axios.defaults.timeout = 5000;
 
 $axios.interceptors.request.use(config => {
@@ -33,7 +33,7 @@ $axios.interceptors.response.use(
       console.log(error);
       console.log(JSON.stringify(error));
       let text = JSON.parse(JSON.stringify(error)).response.status === 404
-          ? '404'
+          ? '接口拦截404'
           : '网络异常，请重试';
           msgbox.alert(text)
 

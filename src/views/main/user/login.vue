@@ -45,7 +45,6 @@ export default {
         password: this.password
       };
       let data = await login(params)
-      debugger
       let user = {
         id: 1,
         username: "vincent",
