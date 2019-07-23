@@ -95,7 +95,7 @@ var webpackConfig = {
         query: {
           limit: 10000,
           name: utils.assetsPath('img/[name].[ext]'),
-          publicPath:process.env.NODE_ENV === 'development'?'/':'/v2/',
+          publicPath:process.env.NODE_ENV === 'development'?'/':'/',
         }
       },
       {
